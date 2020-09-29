@@ -15,4 +15,4 @@ const createPersistedState = (
 };
 
 export default createPersistedState;
-export usePersistedState;
+export { usePersistedState };
