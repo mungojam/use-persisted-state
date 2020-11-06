@@ -2,11 +2,17 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 
 import useEventListener from 'use-typed-event-listener';
 
+import ValueOrFunction from './valueOrFunction';
 import createGlobalState from './createGlobalState';
+import { ObjectStorage } from './objectStorage';
 
-const usePersistedState = (initialState, key: string, { get, set }) => {
-  const globalState = useRef(null);
-  const [state, setState] = useState(() => get(key, initialState));
+const usePersistedState = <T>(
+  initialState: T,
+  key: string,
+  storage: ObjectStorage<T>
+) => {
+  const globalState = useRef<T | null>(null);
+  const [state, setState] = useState(() => storage.get(key, initialState));
 
   // subscribe to `storage` change events
   useEventListener('storage', ({ key: k, newValue }) => {
@@ -29,19 +35,19 @@ const usePersistedState = (initialState, key: string, { get, set }) => {
   }, []);
 
   const persistentSetState = useCallback(
-    (newState: (arg0: any) => any) => {
+    (newState: T | ((arg0: T) => T)) => {
       const newStateValue =
         typeof newState === 'function' ? newState(state) : newState;
 
       // persist to localStorage
-      set(key, newState);
+      storage.set(key, newStateValue);
 
       setState(newStateValue);
 
       // inform all of the other instances in this tab
-      globalState.current.emit(newState);
+      globalState.current.emit(newStateValue);
     },
-    [state, set, key]
+    [state, storage.set, key]
   );
 
   return [state, persistentSetState];

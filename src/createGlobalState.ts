@@ -1,10 +1,14 @@
-const globalState = {};
+type Callback<T> = (arg0: T) => void;
 
-const createGlobalState = (key, thisCallback, initialValue) => {
+const globalState: Record<string, {callbacks: Callback<unknown>[], value: unknown}> = {};
+
+const createGlobalState = <T>(key: string, thisCallback: Callback<T>, initialValue: T) => {
   if (!globalState[key]) {
     globalState[key] = { callbacks: [], value: initialValue };
   }
+
   globalState[key].callbacks.push(thisCallback);
+
   return {
     deregister() {
       const arr = globalState[key].callbacks;
@@ -13,7 +17,7 @@ const createGlobalState = (key, thisCallback, initialValue) => {
         arr.splice(index, 1);
       }
     },
-    emit(value) {
+    emit(value: T) {
       if (globalState[key].value !== value) {
         globalState[key].value = value;
         globalState[key].callbacks.forEach((callback) => {

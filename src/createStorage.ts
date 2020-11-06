@@ -1,14 +1,19 @@
-const createStorage = (provider) => ({
-  get(key: string, defaultValue: () => unknown | unknown) {
+import { ObjectStorage } from './objectStorage';
+import { Provider } from './provider';
+
+const createStorage = <T>(provider: Provider): ObjectStorage<T> => ({
+  get(key: string, defaultValue: () => T | T) {
     const json = provider.getItem(key);
 
-    return json === null
-      ? typeof defaultValue === 'function'
-        ? defaultValue()
-        : defaultValue
-      : JSON.parse(json);
+    if (json === null) {
+      return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+    }
+
+    const parsed = JSON.parse(json) as T;
+
+    return parsed;
   },
-  set(key: string, value: unknown) {
+  set(key: string, value: T) {
     provider.setItem(key, JSON.stringify(value));
   },
 });
