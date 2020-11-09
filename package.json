@@ -6,8 +6,11 @@
   "version": "0.4.0",
   "description": "A custom React Hook that provides a multi-instance, multi-tab/browser shared and persistent state.",
   "main": "dist/use-persisted-state.js",
-  "umd:main": "dist/use-persisted-state.umd.js",
-  "module": "dist/use-persisted-state.m.js",
+  "module": "dist/use-persisted-state.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "source": "src/index.ts",
   "license": "MIT",
   "repository": {
@@ -31,6 +34,7 @@
   ],
   "author": "donavon",
   "devDependencies": {
+    "@babel/preset-react": "^7.12.5",
     "@types/react": "^16.9.56",
     "jest": "^23.6.0",
     "react": "^16.14.0",
