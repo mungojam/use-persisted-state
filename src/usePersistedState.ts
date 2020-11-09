@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, Dispatch, SetStateAction } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import useEventListener from 'use-typed-event-listener';
 import { isValue, ValueOrGenerator } from 'valueOrFunction';
