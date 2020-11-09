@@ -1673,16 +1673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^16.9.9":
-  version: 16.9.9
-  resolution: "@types/react-dom@npm:16.9.9"
-  dependencies:
-    "@types/react": "*"
-  checksum: d92c166f5bcd483f175311eec9c472893216d486106a5b5402eb293840c0b0d1aafb484a3fe3f0f4622ae1f6dff46c9fe970873d4dac7fdf70a50931d3cab4a0
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:*, @types/react@npm:^16.9.56":
+"@types/react@npm:^16.9.56":
   version: 16.9.56
   resolution: "@types/react@npm:16.9.56"
   dependencies:
@@ -7974,20 +7965,6 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.14.0":
-  version: 16.14.0
-  resolution: "react-dom@npm:16.14.0"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    prop-types: ^15.6.2
-    scheduler: ^0.19.1
-  peerDependencies:
-    react: ^16.14.0
-  checksum: a13558f0e7c6d1a98684214460bcd4b9005500015b5048fb1b0d2856786b8764dbc713e6b078a5b1a56e17866400e1d862183c7a0a513ae8351de11f6f6749d2
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^16.12.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -8671,16 +8648,6 @@ resolve@1.17.0:
   dependencies:
     xmlchars: ^2.1.1
   checksum: dbdbd14f903e2a18c3efb422401ad0630dd25e4ed6a52fd01e42b205508ee70e5170da4d39ab2957eca54dc2934b9c8fa6f2f90292b136bfa935db7877177a08
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.19.1":
-  version: 0.19.1
-  resolution: "scheduler@npm:0.19.1"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: 804f990b9f370cca6d42b65f3cba2cc2bfed4973ee5623bed1ea36a6627842db8c891e2e5ac003f06f9ee892d1d3396921e27fa077346caf0213af05776e8dee
   languageName: node
   linkType: hard
 
@@ -9643,6 +9610,13 @@ resolve@1.17.0:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "tslib@npm:2.0.3"
+  checksum: 447bfca5deaa157806c3f77eaba74d05dd0b38b014e47ce79d98b5c77ce7d91b00a687ba13ca1b5a74d35ca1098ac7a072c0a97fad06f0266612f2a03a6c8e8f
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.17.1":
   version: 3.17.1
   resolution: "tsutils@npm:3.17.1"
@@ -9871,15 +9845,14 @@ typescript@^4.0.5:
   resolution: "use-persisted-state@workspace:."
   dependencies:
     "@types/react": ^16.9.56
-    "@types/react-dom": ^16.9.9
     jest: ^23.6.0
     react: ^16.14.0
-    react-dom: ^16.14.0
     tsdx: ^0.14.1
+    tslib: ^2.0.3
     typescript: ^4.0.5
     use-typed-event-listener: ^3.0.0
   peerDependencies:
-    react: ^16.8.0
+    react: ^16.14.0
   languageName: unknown
   linkType: soft
 

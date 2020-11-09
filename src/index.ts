@@ -4,6 +4,7 @@ import usePersistedState from './usePersistedState';
 import createStorage from './createStorage';
 
 import { Provider } from './provider';
+import { ValueOrGenerator } from 'valueOrFunction';
 
 const createPersistedState = <T>(
   key: string,
@@ -11,7 +12,12 @@ const createPersistedState = <T>(
 ): typeof useState => {
   if (provider) {
     const storage = createStorage<T>(provider);
-    return (initialState: T) => usePersistedState(initialState, key, storage);
+
+    function useStateFunction<T>(initialState?: ValueOrGenerator<T>) {
+      return usePersistedState<T>(key, storage, initialState);
+    }
+
+    return useStateFunction;
   }
 
   return useState;

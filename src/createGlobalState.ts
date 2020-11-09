@@ -1,8 +1,13 @@
 type Callback<T> = (arg0: T) => void;
 
-const globalState: Record<string, {callbacks: Callback<unknown>[], value: unknown}> = {};
+const globalState: Record<string, {callbacks: Callback<any>[], value: any}> = {};
 
-const createGlobalState = <T>(key: string, thisCallback: Callback<T>, initialValue: T) => {
+export interface GlobalStateRegistration<T> {
+  deregister: () => void, 
+  emit: (value: T) => void
+}
+
+const createGlobalState = <T>(key: string, thisCallback: Callback<T>, initialValue?: T): GlobalStateRegistration<T> => {
   if (!globalState[key]) {
     globalState[key] = { callbacks: [], value: initialValue };
   }

@@ -1,43 +1,55 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, Dispatch, SetStateAction } from 'react';
 
 import useEventListener from 'use-typed-event-listener';
+import { isValue, ValueOrGenerator } from 'valueOrFunction';
 
-import ValueOrFunction from './valueOrFunction';
-import createGlobalState from './createGlobalState';
+import createGlobalState, { GlobalStateRegistration } from './createGlobalState';
 import { ObjectStorage } from './objectStorage';
 
-const usePersistedState = <T>(
-  initialState: T,
+function usePersistedState<T>(
   key: string,
-  storage: ObjectStorage<T>
-) => {
-  const globalState = useRef<T | null>(null);
-  const [state, setState] = useState(() => storage.get(key, initialState));
+  storage: ObjectStorage<T>,
+  initialState?: ValueOrGenerator<T>
+): [T | undefined, (newState: T | ((prevState: T | undefined) => T)) => void] {
+  const globalState = useRef<GlobalStateRegistration<T> | null>(null);
+
+  const [state, setState] = useState(() => {
+    if(initialState === undefined) {
+      return storage.get(key);
+    }
+
+    const actualInitialState = isValue(initialState) ? initialState : initialState();
+
+    return storage.getOrSet(key, actualInitialState);
+  });
 
   // subscribe to `storage` change events
-  useEventListener('storage', ({ key: k, newValue }) => {
+  useEventListener(window, 'storage', ({ key: k, newValue }) => {
     if (k === key) {
-      const newState = JSON.parse(newValue);
+      const newState = newValue === null ? null : JSON.parse(newValue);
+
       if (state !== newState) {
         setState(newState);
       }
     }
-  });
+  },);
 
   // only called on mount
   useEffect(() => {
+    var storedInitialState = storage.get(key);
+
     // register a listener that calls `setState` when another instance emits
-    globalState.current = createGlobalState(key, setState, initialState);
+    const registration = createGlobalState<T>(key, setState, storedInitialState);
+    globalState.current = registration
 
     return () => {
-      globalState.current.deregister();
+      registration.deregister();
     };
   }, []);
 
   const persistentSetState = useCallback(
-    (newState: (arg0: T) => T | T) => {
-      const newStateValue =
-        typeof newState === 'function' ? newState(state) : newState;
+    (newState: T | ((prevState: T | undefined) => T)) => {
+      const newStateValue = isValue(newState) ? newState : newState(state);
 
       // persist to localStorage
       storage.set(key, newStateValue);
@@ -45,7 +57,7 @@ const usePersistedState = <T>(
       setState(newStateValue);
 
       // inform all of the other instances in this tab
-      globalState.current.emit(newStateValue);
+      globalState.current?.emit(newStateValue);
     },
     [state, storage.set, key]
   );

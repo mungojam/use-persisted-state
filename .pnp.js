@@ -38,11 +38,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@types/react", "npm:16.9.56"],
-            ["@types/react-dom", "npm:16.9.9"],
             ["jest", "npm:23.6.0"],
             ["react", "npm:16.14.0"],
-            ["react-dom", "virtual:95df426dce9db11fb6689a3493d0da66d9538705f72fb6c8b8579a188e7335117ec77f96a73da6b30e7f53a9c72cb4dfec950630f0d657192369f8f5fdf7b138#npm:16.14.0"],
             ["tsdx", "npm:0.14.1"],
+            ["tslib", "npm:2.0.3"],
             ["typescript", "patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=a72311"],
             ["use-typed-event-listener", "virtual:95df426dce9db11fb6689a3493d0da66d9538705f72fb6c8b8579a188e7335117ec77f96a73da6b30e7f53a9c72cb4dfec950630f0d657192369f8f5fdf7b138#npm:3.0.0"]
           ],
@@ -2284,16 +2283,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:16.9.56"],
             ["@types/prop-types", "npm:15.7.3"],
             ["csstype", "npm:3.0.4"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/react-dom", [
-        ["npm:16.9.9", {
-          "packageLocation": "./.yarn/cache/@types-react-dom-npm-16.9.9-eac1c70629-d92c166f5b.zip/node_modules/@types/react-dom/",
-          "packageDependencies": [
-            ["@types/react-dom", "npm:16.9.9"],
-            ["@types/react", "npm:16.9.56"]
           ],
           "linkType": "HARD",
         }]
@@ -9230,25 +9219,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["react-dom", [
-        ["virtual:95df426dce9db11fb6689a3493d0da66d9538705f72fb6c8b8579a188e7335117ec77f96a73da6b30e7f53a9c72cb4dfec950630f0d657192369f8f5fdf7b138#npm:16.14.0", {
-          "packageLocation": "./.yarn/$$virtual/react-dom-virtual-c23db25df0/0/cache/react-dom-npm-16.14.0-516a97ad33-a13558f0e7.zip/node_modules/react-dom/",
-          "packageDependencies": [
-            ["react-dom", "virtual:95df426dce9db11fb6689a3493d0da66d9538705f72fb6c8b8579a188e7335117ec77f96a73da6b30e7f53a9c72cb4dfec950630f0d657192369f8f5fdf7b138#npm:16.14.0"],
-            ["@types/react", "npm:16.9.56"],
-            ["loose-envify", "npm:1.4.0"],
-            ["object-assign", "npm:4.1.1"],
-            ["prop-types", "npm:15.7.2"],
-            ["react", "npm:16.14.0"],
-            ["scheduler", "npm:0.19.1"]
-          ],
-          "packagePeers": [
-            "@types/react",
-            "react"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["react-is", [
         ["npm:16.13.1", {
           "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-11bcf1267a.zip/node_modules/react-is/",
@@ -9956,17 +9926,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["saxes", "npm:3.1.11"],
             ["xmlchars", "npm:2.2.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["scheduler", [
-        ["npm:0.19.1", {
-          "packageLocation": "./.yarn/cache/scheduler-npm-0.19.1-a4dd0ffd3a-804f990b9f.zip/node_modules/scheduler/",
-          "packageDependencies": [
-            ["scheduler", "npm:0.19.1"],
-            ["loose-envify", "npm:1.4.0"],
-            ["object-assign", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -10992,6 +10951,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.0.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:2.0.3", {
+          "packageLocation": "./.yarn/cache/tslib-npm-2.0.3-62a2b3751d-447bfca5de.zip/node_modules/tslib/",
+          "packageDependencies": [
+            ["tslib", "npm:2.0.3"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["tsutils", [
@@ -11255,11 +11221,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["use-persisted-state", "workspace:."],
             ["@types/react", "npm:16.9.56"],
-            ["@types/react-dom", "npm:16.9.9"],
             ["jest", "npm:23.6.0"],
             ["react", "npm:16.14.0"],
-            ["react-dom", "virtual:95df426dce9db11fb6689a3493d0da66d9538705f72fb6c8b8579a188e7335117ec77f96a73da6b30e7f53a9c72cb4dfec950630f0d657192369f8f5fdf7b138#npm:16.14.0"],
             ["tsdx", "npm:0.14.1"],
+            ["tslib", "npm:2.0.3"],
             ["typescript", "patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=a72311"],
             ["use-typed-event-listener", "virtual:95df426dce9db11fb6689a3493d0da66d9538705f72fb6c8b8579a188e7335117ec77f96a73da6b30e7f53a9c72cb4dfec950630f0d657192369f8f5fdf7b138#npm:3.0.0"]
           ],
