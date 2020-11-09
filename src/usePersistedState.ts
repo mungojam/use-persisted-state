@@ -35,7 +35,7 @@ const usePersistedState = <T>(
   }, []);
 
   const persistentSetState = useCallback(
-    (newState: T | ((arg0: T) => T)) => {
+    (newState: (arg0: T) => T | T) => {
       const newStateValue =
         typeof newState === 'function' ? newState(state) : newState;
 
