@@ -3,12 +3,12 @@
   "publishConfig": {
     "tag": "latest"
   },
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A custom React Hook that provides a multi-instance, multi-tab/browser shared and persistent state.",
   "main": "dist/use-persisted-state.js",
   "umd:main": "dist/use-persisted-state.umd.js",
   "module": "dist/use-persisted-state.m.js",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-testing-library": "^5.5.0",
-    "tsdx": "^0.14.0"
+    "tsdx": "^0.14.1"
   },
   "peerDependencies": {
     "react": "^16.8.0"
