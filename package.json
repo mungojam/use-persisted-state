@@ -1,9 +1,9 @@
 {
-  "name": "use-persisted-state",
+  "name": "@mungojam/use-persisted-state",
   "publishConfig": {
     "tag": "latest"
   },
-  "version": "0.4.0",
+  "version": "0.9.0",
   "description": "A custom React Hook that provides a multi-instance, multi-tab/browser shared and persistent state.",
   "main": "dist/use-persisted-state.js",
   "module": "dist/use-persisted-state.esm.js",
@@ -32,7 +32,7 @@
     "persistent",
     "localstorage"
   ],
-  "author": "donavon",
+  "author": "mungojam (forked from donavon)",
   "devDependencies": {
     "@babel/preset-react": "^7.12.5",
     "@types/react": "^16.9.56",

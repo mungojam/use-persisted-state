@@ -1543,6 +1543,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mungojam/use-persisted-state@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@mungojam/use-persisted-state@workspace:."
+  dependencies:
+    "@babel/preset-react": ^7.12.5
+    "@types/react": ^16.9.56
+    jest: ^23.6.0
+    react: ^16.14.0
+    tsdx: ^0.14.1
+    tslib: ^2.0.3
+    typescript: ^4.0.5
+    use-typed-event-listener: ^3.0.0
+  peerDependencies:
+    react: ^16.14.0
+  languageName: unknown
+  linkType: soft
+
 "@rollup/plugin-babel@npm:^5.1.0":
   version: 5.2.1
   resolution: "@rollup/plugin-babel@npm:5.2.1"
@@ -9960,23 +9977,6 @@ typescript@^4.0.5:
   checksum: 5262ab69e846beb03131ba308df39ca9c4560f4c6660e4e1f77bb5c7360d38cf47a1815c5a5fe1775a10e099978d62234ee884d97597c6a50f59eb05eab90f8b
   languageName: node
   linkType: hard
-
-"use-persisted-state@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "use-persisted-state@workspace:."
-  dependencies:
-    "@babel/preset-react": ^7.12.5
-    "@types/react": ^16.9.56
-    jest: ^23.6.0
-    react: ^16.14.0
-    tsdx: ^0.14.1
-    tslib: ^2.0.3
-    typescript: ^4.0.5
-    use-typed-event-listener: ^3.0.0
-  peerDependencies:
-    react: ^16.14.0
-  languageName: unknown
-  linkType: soft
 
 "use-typed-event-listener@npm:^3.0.0":
   version: 3.0.0
