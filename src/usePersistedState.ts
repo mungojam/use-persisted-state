@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 import useEventListener from 'use-typed-event-listener';
-import { isValue, ValueOrGenerator } from 'valueOrFunction';
 
+import { isValue, ValueOrGenerator } from './valueOrFunction';
 import createGlobalState, { GlobalStateRegistration } from './createGlobalState';
 import { ObjectStorage } from './objectStorage';
 
