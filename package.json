@@ -3,15 +3,14 @@
   "publishConfig": {
     "tag": "latest"
   },
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A custom React Hook that provides a multi-instance, multi-tab/browser shared and persistent state.",
-  "main": "dist/use-persisted-state.js",
+  "main": "dist/index.js",
   "module": "dist/use-persisted-state.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "source": "src/index.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
