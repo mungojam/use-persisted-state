@@ -1,4 +1,4 @@
-import { isValue, ValueOrGenerator } from 'valueOrFunction';
+import { isValue, ValueOrGenerator } from './valueOrFunction';
 import { ObjectStorage } from './objectStorage';
 import { Provider } from './provider';
 
