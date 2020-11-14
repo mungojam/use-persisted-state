@@ -3,7 +3,9 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import useEventListener from 'use-typed-event-listener';
 
 import { isValue, ValueOrGenerator } from './valueOrFunction';
-import createGlobalState, { GlobalStateRegistration } from './createGlobalState';
+import createGlobalState, {
+  GlobalStateRegistration,
+} from './createGlobalState';
 import { ObjectStorage } from './objectStorage';
 
 function usePersistedState<T>(
@@ -14,17 +16,20 @@ function usePersistedState<T>(
   const globalState = useRef<GlobalStateRegistration<T> | null>(null);
 
   const [state, setState] = useState(() => {
-    if(initialState === undefined) {
+    if (initialState === undefined) {
       return storage.get(key);
     }
 
-    const actualInitialState = isValue(initialState) ? initialState : initialState();
+    const actualInitialState = isValue(initialState)
+      ? initialState
+      : initialState();
 
     return storage.getOrSet(key, actualInitialState);
   });
 
   // subscribe to `storage` change events
   useEventListener(window, 'storage', ({ key: k, newValue }) => {
+    console.trace(`new value for '${k}' : '${newValue}'`);
     if (k === key) {
       const newState = newValue === null ? null : JSON.parse(newValue);
 
@@ -32,15 +37,19 @@ function usePersistedState<T>(
         setState(newState);
       }
     }
-  },);
+  });
 
   // only called on mount
   useEffect(() => {
     var storedInitialState = storage.get(key);
 
     // register a listener that calls `setState` when another instance emits
-    const registration = createGlobalState<T>(key, setState, storedInitialState);
-    globalState.current = registration
+    const registration = createGlobalState<T>(
+      key,
+      setState,
+      storedInitialState
+    );
+    globalState.current = registration;
 
     return () => {
       registration.deregister();
@@ -63,6 +72,6 @@ function usePersistedState<T>(
   );
 
   return [state, persistentSetState];
-};
+}
 
 export default usePersistedState;
