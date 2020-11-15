@@ -29,7 +29,7 @@ function usePersistedState<T>(
 
   // subscribe to `storage` change events
   useEventListener(window, 'storage', ({ key: k, newValue }) => {
-    console.trace(`new value for '${k}' : '${newValue}'`);
+    console.debug(`new value for '${k}' : '${newValue}'`);
     if (k === key) {
       const newState = newValue === null ? null : JSON.parse(newValue);
 
